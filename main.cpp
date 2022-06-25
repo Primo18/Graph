@@ -10,10 +10,13 @@ class Graph
 private:
     int n; // number of vertices
     int m; // number of edges
+    vector<vector<int>> grafo;
+
 public:
     Graph(int n)
     {
         this->n = n;
+        vector<vector<int>> grafo(10);
     }
     ~Graph()
     {
