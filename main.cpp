@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Se puede asumir que no se ingresarán aristas repetidas, es decir, que el grafo es simple
 class Graph
 {
 private:
@@ -27,12 +28,14 @@ public:
     // si el nodo u puede alcanzar a todos los otros nodos:
     bool checkConnectivityDFS(int u)
     {
+        return false;
     }
 
     // Verificar a través de un recorrido BFS (implementado usando queue)
     // si el nodo u puede alcanzar a todos los otros nodos:
     bool checkConnectivityBFS(int u)
     {
+        return false;
     }
 };
 
