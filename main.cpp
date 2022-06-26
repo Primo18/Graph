@@ -157,7 +157,7 @@ public:
             int random = rand() % 5 + 1;
             for (int j = 0; j < random; j++)
             {
-                int vRand = rand() % 10;
+                int vRand = rand() % n;
                 if (vRand != i)
                 {
                     temp.push_back(vRand);
@@ -180,7 +180,7 @@ int main(int argc, char const *argv[])
     std::cout << std::boolalpha;
 
     int n = 10;
-    int u = rand() % 10;
+    int u = rand() % n;
     Graph *graph = new Graph(n);
 
     graph->insertRandomEdges();
