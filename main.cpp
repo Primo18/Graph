@@ -51,12 +51,15 @@ public:
         }
 
         pila.push(u);
-        visited[u] = true;
         while (!pila.empty())
         {
             // Pop a vertex from stack and print it
             int vertex = pila.top();
             pila.pop();
+
+            // Stack may contain same vertex twice
+            // mark that vertex as visited
+            visited[vertex] = true;
 
             // Get all adjacent vertices of the popped vertex v
             // If a adjacent has not been visited, then push it
@@ -66,8 +69,6 @@ public:
                 if (!visited[v])
                 {
                     pila.push(v);
-                    // mark that vertex v as visited
-                    visited[v] = true;
                 }
             }
         }
@@ -171,6 +172,19 @@ public:
                 addEdge(i, v);
             }
         }
+
+        // Para hacer el grafo simple sin aristas paralelas o repetidas
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < grafo.at(i).size(); j++)
+            {
+                int v = grafo.at(i).at(j);
+                if (find(grafo.at(v).begin(), grafo.at(v).end(), i) != grafo.at(v).end())
+                {
+                    grafo.at(i).erase(remove(grafo.at(i).begin(), grafo.at(i).end(), v), grafo.at(i).end());
+                }
+            }
+        }
     }
 };
 
@@ -184,6 +198,7 @@ int main(int argc, char const *argv[])
     Graph *graph = new Graph(n);
 
     graph->insertRandomEdges();
+
     graph->print();
     graph->checkConnectivityDFS(u);
     graph->checkConnectivityBFS(u);
